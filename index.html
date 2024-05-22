@@ -55,6 +55,11 @@
             /* White glow for YouTube button */
             box-shadow: 0 0 10px white;
         }
+        .button.tiktok {
+            background-color: #800080; /* Purple background */
+            /* White glow for TikTok button */
+            box-shadow: 0 0 10px white;
+        }
         .button.discord {
             background-color: #7289DA;
             /* Blue glow for Discord button */
@@ -68,7 +73,13 @@
         .button:hover {
             opacity: 0.8;
         }
-        /* Added styles for copyright text */
+        /* Added styles for version and copyright text */
+        .version {
+            position: absolute;
+            bottom: 40px; /* Adjusted to position above the copyright */
+            right: 20px; /* Positioned at the right */
+            font-size: 0.8em; /* Adjust font size as needed */
+        }
         .copyright {
             position: absolute;
             bottom: 20px; /* Adjusted to position above the bottom */
@@ -82,9 +93,12 @@
     <div class="subtitle">Trolling Games One Mod Menu At A Time.</div>
     <div class="button-container">
         <a href="https://www.youtube.com/@J0kerModZ?sub_confirmation=1" target="_blank" class="button youtube">Visit YouTube Channel</a>
+        <a href="https://www.tiktok.com/@j0kermodz_real" target="_blank" class="button tiktok">Follow on TikTok</a>
         <a href="https://discord.gg/Kdwqg2VUHc" target="_blank" class="button discord">Join Discord</a>
         <a href="https://github.com/J0kerModZ" target="_blank" class="button github">Download Mods</a>
     </div>
+    <!-- Added version text -->
+    <div class="version">j0kermodz.lol v1.1</div>
     <!-- Added copyright text -->
     <div class="copyright">©J0kerModZ 2024</div>
 </body>
