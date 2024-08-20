@@ -15,28 +15,29 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            position: relative; /* Added position relative to body */
+            position: relative;
         }
         .title {
             position: absolute;
             top: 20px;
-            font-size: 4em; /* Increased font size */
+            font-size: 4em;
             font-weight: bold;
             text-align: center;
         }
         .subtitle {
             position: absolute;
-            top: 90px; /* Adjusted to position below the title */
+            top: 90px;
             font-size: 1.5em;
             color: red;
             text-align: center;
         }
-        .button-container {
+        .button-row {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             justify-content: center;
             align-items: center;
-            gap: 20px; /* Add space between buttons */
+            gap: 20px; /* Space between buttons */
+            margin-bottom: 20px; /* Space between rows */
         }
         .button {
             color: white;
@@ -47,71 +48,73 @@
             text-decoration: none;
             border-radius: 5px;
             text-align: center;
-            /* Default box-shadow */
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0); /* Transparent */
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0);
         }
         .button.youtube {
             background-color: #FF0000;
-            /* White glow for YouTube button */
             box-shadow: 0 0 10px white;
         }
         .button.tiktok {
-            background-color: #800080; /* Purple background */
-            /* White glow for TikTok button */
+            background-color: #800080;
             box-shadow: 0 0 10px white;
         }
         .button.discord {
             background-color: #7289DA;
-            /* Blue glow for Discord button */
             box-shadow: 0 0 10px blue;
         }
         .button.github {
             background-color: #ff9900;
-            /* Red glow for GitHub button */
             box-shadow: 0 0 10px rgb(255, 217, 0);
         }
         .button.amitermed {
-            background-color: #00d9ff; /* Green background */
-            /* Yellow glow for Am I Termed button */
+            background-color: #00d9ff;
             box-shadow: 0 0 10px rgb(0, 153, 255);
         }
         .button.donate {
-            background-color: #FFD700; /* Gold background */
-            /* Green glow for Donate button */
+            background-color: #FFD700;
             box-shadow: 0 0 10px rgb(187, 255, 0);
+        }
+        .button.gorillaclickers {
+            background-color: #FF69B4; /* Hot pink background */
+            box-shadow: 0 0 10px rgb(255, 105, 180);
         }
         .button:hover {
             opacity: 0.8;
         }
-        /* Added styles for version and copyright text */
         .version {
             position: absolute;
-            bottom: 40px; /* Adjusted to position above the copyright */
-            right: 20px; /* Positioned at the right */
-            font-size: 0.8em; /* Adjust font size as needed */
+            bottom: 40px;
+            right: 20px;
+            font-size: 0.8em;
         }
         .copyright {
             position: absolute;
-            bottom: 20px; /* Adjusted to position above the bottom */
-            right: 20px; /* Positioned at the right */
-            font-size: 0.8em; /* Adjust font size as needed */
+            bottom: 20px;
+            right: 20px;
+            font-size: 0.8em;
         }
     </style>
 </head>
 <body>
     <div class="title">J0kerModZ</div>
     <div class="subtitle">Trolling Games One Mod Menu At A Time.</div>
-    <div class="button-container">
+    
+    <!-- First row of buttons -->
+    <div class="button-row">
         <a href="https://www.youtube.com/@J0kerModZ?sub_confirmation=1" target="_blank" class="button youtube">Visit YouTube Channel</a>
         <a href="https://www.tiktok.com/@j0kermodz_real" target="_blank" class="button tiktok">Follow on TikTok</a>
         <a href="https://discord.gg/Kdwqg2VUHc" target="_blank" class="button discord">Join Discord</a>
         <a href="https://github.com/J0kerModZ" target="_blank" class="button github">Download Mods</a>
+    </div>
+
+    <!-- Second row of buttons -->
+    <div class="button-row">
         <a href="https://amitermed.com/UuYeJQ" target="_blank" class="button amitermed">Am I Termed</a>
         <a href="https://linktr.ee/j0kermodz" target="_blank" class="button donate">Donate</a>
+        <a href="https://j0kermodz.lol/gc" target="_blank" class="button gorillaclickers">Gorilla Clickers</a>
     </div>
-    <!-- Added version text -->
+
     <div class="version">j0kermodz.lol v1.2</div>
-    <!-- Added copyright text -->
     <div class="copyright">©J0kerModZ 2024</div>
 </body>
 </html>
