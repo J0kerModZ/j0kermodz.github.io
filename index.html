@@ -1,123 +1,111 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Unity WebGL Player | Gorilla Clicker</title>
-  <link rel="shortcut icon" href="TemplateData/favicon.ico">
-  <link rel="stylesheet" href="TemplateData/style.css">
-  <style>
-    body {
-      background-color: black; /* Set background color to black */
-    }
-    #home-button {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      padding: 10px 15px;
-      background-color: #ff5722;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      text-decoration: none;
-      display: inline-block;
-    }
-    #home-button:hover {
-      background-color: #e64a19; /* Darken on hover */
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J0kerModZ</title>
+    <style>
+        @keyframes buttonFlash {
+            0% { background-color: red; box-shadow: 0 0 20px red; }
+            33% { background-color: green; box-shadow: 0 0 20px green; }
+            66% { background-color: blue; box-shadow: 0 0 20px blue; }
+            100% { background-color: red; box-shadow: 0 0 20px red; }
+        }
+
+        @keyframes outlineFlash {
+            0% { text-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red; }
+            33% { text-shadow: 0 0 10px green, 0 0 20px green, 0 0 30px green; }
+            66% { text-shadow: 0 0 10px blue, 0 0 20px blue, 0 0 30px blue; }
+            100% { text-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red; }
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            position: relative;
+            background: url('https://25.media.tumblr.com/4cddccf83b2d90489d16e4e990703345/tumblr_ms92j3l63y1s1b6gto1_1280.gif') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .title {
+            position: absolute;
+            top: 10px;
+            font-size: 4em;
+            font-weight: bold;
+            text-align: center;
+            color: white; /* Set text color to white */
+            animation: outlineFlash 2s infinite;
+        }
+
+        .subtitle {
+            position: absolute;
+            top: 80px;
+            font-size: 1.5em;
+            color: white; /* Set text color to white */
+            animation: outlineFlash 2s infinite;
+        }
+
+        .button-column {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 120px;
+        }
+
+        .button {
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.5em;
+            cursor: pointer;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            width: 320px;
+            animation: buttonFlash 2s infinite;
+        }
+
+        .button:hover {
+            opacity: 0.8;
+        }
+
+        .version {
+            position: absolute;
+            bottom: 40px;
+            right: 20px;
+            font-size: 0.8em;
+            color: white; /* Set text color to white */
+        }
+
+        .copyright {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 0.8em;
+            color: white; /* Set text color to white */
+        }
+    </style>
 </head>
 <body>
-  <!-- Home Button -->
-  <a id="home-button" href="https://j0kermodz.lol">Home</a>
-  
-  <div id="unity-container" class="unity-desktop">
-    <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
-    <div id="unity-loading-bar">
-      <div id="unity-logo"></div>
-      <div id="unity-progress-bar-empty">
-        <div id="unity-progress-bar-full"></div>
-      </div>
+    <div class="title">J0kerModZ</div>
+    <div class="subtitle">Trolling Games One Mod Menu At A Time.</div>
+    
+    <div class="button-column">
+        <a href="https://www.youtube.com/@J0kerModZ?sub_confirmation=1" target="_blank" class="button">YouTube Channel</a>
+        <a href="https://www.tiktok.com/@j0kermodz_real" target="_blank" class="button">TikTok Account</a>
+        <a href="https://discord.gg/Kdwqg2VUHc" target="_blank" class="button">Discord</a>
+        <a href="https://github.com/J0kerModZ" target="_blank" class="button">Download Mods</a>
+        <a href="https://j0kermodz.lol/gc" target="_blank" class="button">Gorilla Clicker</a>
     </div>
-    <div id="unity-warning"> </div>
-    <div id="unity-footer">
-      <div id="unity-webgl-logo"></div>
-      <div id="unity-fullscreen-button"></div>
-      <div id="unity-build-title">Gorilla Clicker</div>
-    </div>
-  </div>
-  <script>
-    var container = document.querySelector("#unity-container");
-    var canvas = document.querySelector("#unity-canvas");
-    var loadingBar = document.querySelector("#unity-loading-bar");
-    var progressBarFull = document.querySelector("#unity-progress-bar-full");
-    var fullscreenButton = document.querySelector("#unity-fullscreen-button");
-    var warningBanner = document.querySelector("#unity-warning");
 
-    function unityShowBanner(msg, type) {
-      function updateBannerVisibility() {
-        warningBanner.style.display = warningBanner.children.length ? 'block' : 'none';
-      }
-      var div = document.createElement('div');
-      div.innerHTML = msg;
-      warningBanner.appendChild(div);
-      if (type == 'error') div.style = 'background: red; padding: 10px;';
-      else {
-        if (type == 'warning') div.style = 'background: yellow; padding: 10px;';
-        setTimeout(function() {
-          warningBanner.removeChild(div);
-          updateBannerVisibility();
-        }, 5000);
-      }
-      updateBannerVisibility();
-    }
-
-    var buildUrl = "Build";
-    var loaderUrl = buildUrl + "/Gorilla Clicker Web.loader.js";
-    var config = {
-      dataUrl: buildUrl + "/Gorilla Clicker Web.data",
-      frameworkUrl: buildUrl + "/Gorilla Clicker Web.framework.js",
-      codeUrl: buildUrl + "/Gorilla Clicker Web.wasm",
-      streamingAssetsUrl: "StreamingAssets",
-      companyName: "j0kermodz.lol",
-      productName: "Gorilla Clicker",
-      productVersion: "1.1",
-      showBanner: unityShowBanner,
-    };
-
-    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-      var meta = document.createElement('meta');
-      meta.name = 'viewport';
-      meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-      document.getElementsByTagName('head')[0].appendChild(meta);
-      container.className = "unity-mobile";
-      canvas.className = "unity-mobile";
-    } else {
-      canvas.style.width = "960px";
-      canvas.style.height = "600px";
-    }
-
-    canvas.style.background = "url('" + buildUrl + "/Gorilla Clicker Web.jpg') center / cover";
-    loadingBar.style.display = "block";
-
-    var script = document.createElement("script");
-    script.src = loaderUrl;
-    script.onload = () => {
-      createUnityInstance(canvas, config, (progress) => {
-        progressBarFull.style.width = 100 * progress + "%";
-      }).then((unityInstance) => {
-        loadingBar.style.display = "none";
-        fullscreenButton.onclick = () => {
-          unityInstance.SetFullscreen(1);
-        };
-      }).catch((message) => {
-        alert(message);
-      });
-    };
-
-    document.body.appendChild(script);
-  </script>
+    <div class="version">j0kermodz.lol v1.3</div>
+    <div class="copyright">©J0kerModZ 2024 - 2025</div>
 </body>
 </html>
