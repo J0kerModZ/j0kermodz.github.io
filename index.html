@@ -5,130 +5,227 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>J0kerModZ</title>
     <style>
-        @keyframes buttonFlash {
-            0% { background-color: red; box-shadow: 0 0 20px red; }
-            33% { background-color: green; box-shadow: 0 0 20px green; }
-            66% { background-color: blue; box-shadow: 0 0 20px blue; }
-            100% { background-color: red; box-shadow: 0 0 20px red; }
-        }
-
-        @keyframes outlineFlash {
-            0% { text-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red; }
-            33% { text-shadow: 0 0 10px green, 0 0 20px green, 0 0 30px green; }
-            66% { text-shadow: 0 0 10px blue, 0 0 20px blue, 0 0 30px blue; }
-            100% { text-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red; }
+        @keyframes rgbStrobe {
+            0% {
+                color: rgb(255, 0, 0);
+            }
+            25% {
+                color: rgb(0, 255, 0);
+            }
+            50% {
+                color: rgb(0, 0, 255);
+            }
+            75% {
+                color: rgb(255, 255, 0);
+            }
+            100% {
+                color: rgb(255, 0, 255);
+            }
         }
 
         body {
-            margin: 0;
             font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            position: relative;
-            background: url('https://25.media.tumblr.com/4cddccf83b2d90489d16e4e990703345/tumblr_ms92j3l63y1s1b6gto1_1280.gif') no-repeat center center fixed;
+            text-align: center;
+            background-image: url('https://25.media.tumblr.com/4cddccf83b2d90489d16e4e990703345/tumblr_ms92j3l63y1s1b6gto1_1280.gif');
             background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            color: white;
         }
 
-        .title {
+        header {
+            background-color: rgba(56, 56, 56, 0.7);
+            color: white;
+            padding: 10px 0;
+            position: relative;
+        }
+
+        h1 {
+            margin: 0;
+            animation: rgbStrobe 2s infinite;
+        }
+
+        .home-button {
             position: absolute;
             top: 10px;
-            font-size: 4em;
-            font-weight: bold;
-            text-align: center;
-            color: white; /* Set text color to white */
-            animation: outlineFlash 2s infinite;
-        }
-
-        .subtitle {
-            position: absolute;
-            top: 80px;
-            font-size: 1.5em;
-            color: white; /* Set text color to white */
-            animation: outlineFlash 2s infinite;
-        }
-
-        .button-column {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 15px;
-            margin-top: 120px;
-        }
-
-        .button {
-            color: white;
-            border: none;
+            left: 10px;
             padding: 10px 20px;
-            font-size: 1.5em;
-            cursor: pointer;
+            background-color: #000000;
+            color: white;
             text-decoration: none;
             border-radius: 5px;
+            font-size: 16px;
+            animation: rgbStrobe 2s infinite;
+        }
+
+        .home-button:hover {
+            background-color: #141414;
+        }
+
+        .container {
+            padding: 20px;
+            z-index: 1;
+        }
+
+        .social-button-container {
+            display: inline-block;
+            margin: 20px;
+            padding: 20px;
+            background-color: rgba(90, 90, 90, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            width: 320px;
-            animation: buttonFlash 2s infinite;
+            width: 300px;
         }
 
-        .button:hover {
-            opacity: 0.8;
+        .social-button-container img {
+            width: 50px;
+            margin-bottom: 10px;
         }
 
-        .version {
-            position: absolute;
-            bottom: 40px;
-            right: 20px;
-            font-size: 0.8em;
-            color: white; /* Set text color to white */
+        .social-button-container a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #000000;
+            color: rgb(255, 0, 0);
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            margin-top: 10px;
+            animation: rgbStrobe 2s infinite;
         }
 
-        .copyright {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            font-size: 0.8em;
-            color: white; /* Set text color to white */
+        .social-button-container a:hover {
+            background-color: #141414;
         }
 
-        /* Ad container style */
-        .adsense-container {
-            margin-top: 20px;
+        .floating-box {
+            position: fixed;
+            bottom: 10px;
+            z-index: 100;
+            font-size: 16px;
+            color: white;
+            background-color: rgba(90, 90, 90, 0.8);
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
             text-align: center;
-            width: 100%;
+        }
+
+        #github-repo {
+            left: 10px;
+            bottom: 10px;
+        }
+
+        #youtube-video {
+            right: 10px;
+            bottom: 10px;
+        }
+
+        #youtube-video iframe {
+            width: 280px;
+            height: 160px;
+        }
+
+        #youtube-video a,
+        #github-repo a {
+            display: block;
+            padding: 10px 20px;
+            background-color: #000000;
+            color: rgb(255, 0, 0);
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            margin-top: 10px;
+            animation: rgbStrobe 2s infinite;
+        }
+
+        #youtube-video a:hover,
+        #github-repo a:hover {
+            background-color: #141414;
         }
     </style>
-
-    <!-- Google AdSense script -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3482284012418268" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="title">J0kerModZ</div>
-    <div class="subtitle">Trolling Games One Mod Menu At A Time.</div>
-    
-    <div class="button-column">
-        <a href="https://www.youtube.com/@J0kerModZ?sub_confirmation=1" target="_blank" class="button">YouTube</a>
-        <a href="https://www.tiktok.com/@j0kermodz_real" target="_blank" class="button">TikTok</a>
-        <a href="https://discord.gg/Kdwqg2VUHc" target="_blank" class="button">Discord</a>
-        <a href="https://github.com/J0kerModZ" target="_blank" class="button">Download Mods</a>
-        <a href="https://www.j0kermodz.lol/Donate" target="_blank" class="button">Support Me!</a>
+    <header>
+        <h1>J0kerModZ</h1>
+    </header>
+
+    <div class="container">
+        <h2>Trolling Games One Mod Menu At A Time</h2>
+
+        <div class="social-button-container">
+            <img src="https://cdn-icons-png.flaticon.com/128/1384/1384060.png" alt="YouTube">
+            <h3>YouTube</h3>
+            <a href="https://www.youtube.com/@J0kerModZ?sub_confirmation=1" target="_blank">Subscribe</a>
+        </div>
+
+        <div class="social-button-container">
+            <img src="https://cdn4.iconfinder.com/data/icons/social-media-flat-7/64/Social-media_Tiktok-512.png" alt="TikTok">
+            <h3>TikTok</h3>
+            <a href="https://www.tiktok.com/@j0kermodz_real" target="_blank">Follow</a>
+        </div>
+
+        <div class="social-button-container">
+            <img src="https://www.svgrepo.com/show/353655/discord-icon.svg" alt="Discord">
+            <h3>Discord</h3>
+            <a href="https://discord.gg/Kdwqg2VUHc" target="_blank">Join</a>
+        </div>
+
+        <div class="social-button-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub">
+            <h3>GitHub</h3>
+            <a href="https://github.com/J0kerModZ" target="_blank">Visit</a>
+        </div>
+
+        <div class="social-button-container">
+            <img src="https://cdn-icons-png.flaticon.com/128/10384/10384161.png" alt="Support Me">
+            <h3>Support Me!</h3>
+            <a href="https://www.j0kermodz.lol/Donate" target="_blank">Donate</a>
+        </div>
     </div>
 
-    <!-- AdSense Ad Block -->
-    <div class="adsense-container">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-3482284012418268"
-             data-ad-slot="1234567890"
-             data-ad-format="auto"></ins>
+    <div id="github-repo" class="floating-box">
+        <h4>Latest GitHub Repo:</h4>
+        <p id="github-repo-name">Loading...</p>
+        <a href="#" id="github-repo-link" target="_blank">View Repo</a>
     </div>
 
-    <div class="version">j0kermodz.lol v1.3</div>
-    <div class="copyright">©J0kerModZ 2024 - 2025</div>
+    <div id="youtube-video" class="floating-box">
+        <h4>Latest YouTube Video:</h4>
+        <p id="youtube-video-title">Loading...</p>
+        <iframe id="youtube-video-iframe" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <a href="#" id="youtube-video-link" target="_blank">Watch Video</a>
+    </div>
 
     <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
+        fetch('https://api.github.com/users/J0kerModZ/repos?sort=updated&per_page=1')
+            .then(response => response.json())
+            .then(data => {
+                const latestRepo = data[0];
+                document.getElementById('github-repo-name').textContent = latestRepo.name;
+                document.getElementById('github-repo-link').href = latestRepo.html_url;
+            })
+            .catch(err => {
+                console.error('GitHub API error:', err);
+            });
+
+        const youtubeApiKey = 'AIzaSyDL-jITcz-tYfhjCy0D2_9XHVcTMzdWqxo';
+        const channelId = 'UC3YOrUfCrzQdUNTSTYigt3g';
+        fetch(`https://www.googleapis.com/youtube/v3/search?key=${youtubeApiKey}&channelId=${channelId}&order=date&part=snippet&type=video`)
+            .then(response => response.json())
+            .then(data => {
+                const latestVideo = data.items[0];
+                document.getElementById('youtube-video-title').textContent = latestVideo.snippet.title;
+                const videoId = latestVideo.id.videoId;
+                document.getElementById('youtube-video-iframe').src = `https://www.youtube.com/embed/${videoId}`;
+                document.getElementById('youtube-video-link').href = `https://www.youtube.com/watch?v=${videoId}`;
+            })
+            .catch(err => {
+                console.error('YouTube API error:', err);
+            });
     </script>
 </body>
 </html>
