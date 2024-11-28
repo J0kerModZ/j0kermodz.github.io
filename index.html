@@ -201,6 +201,7 @@
     </div>
 
     <script>
+        // GitHub API
         fetch('https://api.github.com/users/J0kerModZ/repos?sort=updated&per_page=1')
             .then(response => response.json())
             .then(data => {
@@ -212,6 +213,7 @@
                 console.error('GitHub API error:', err);
             });
 
+        // YouTube API
         const youtubeApiKey = 'AIzaSyDL-jITcz-tYfhjCy0D2_9XHVcTMzdWqxo';
         const channelId = 'UC3YOrUfCrzQdUNTSTYigt3g';
         fetch(`https://www.googleapis.com/youtube/v3/search?key=${youtubeApiKey}&channelId=${channelId}&order=date&part=snippet&type=video`)
@@ -226,6 +228,16 @@
             .catch(err => {
                 console.error('YouTube API error:', err);
             });
+
+        // Hide sections on mobile devices
+        function isMobileDevice() {
+            return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+        }
+
+        if (isMobileDevice()) {
+            document.getElementById('github-repo').style.display = 'none';
+            document.getElementById('youtube-video').style.display = 'none';
+        }
     </script>
 </body>
 </html>
