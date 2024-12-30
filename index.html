@@ -47,23 +47,6 @@
             animation: rgbStrobe 2s infinite;
         }
 
-        .home-button {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            padding: 10px 20px;
-            background-color: #000000;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 16px;
-            animation: rgbStrobe 2s infinite;
-        }
-
-        .home-button:hover {
-            background-color: #141414;
-        }
-
         .container {
             padding: 20px;
             z-index: 1;
@@ -150,12 +133,11 @@
 </head>
 <body>
     <header>
-        <h1>J0kerModZ</h1>
+        <h1>j0kermodz.lol</h1>
     </header>
 
     <div class="container">
         <h2>Trolling Games One Mod Menu At A Time</h2>
-
         <div class="social-button-container">
             <img src="https://cdn-icons-png.flaticon.com/128/1384/1384060.png" alt="YouTube">
             <h3>YouTube</h3>
@@ -201,7 +183,6 @@
     </div>
 
     <script>
-        // GitHub API
         fetch('https://api.github.com/users/J0kerModZ/repos?sort=updated&per_page=1')
             .then(response => response.json())
             .then(data => {
@@ -209,27 +190,27 @@
                 document.getElementById('github-repo-name').textContent = latestRepo.name;
                 document.getElementById('github-repo-link').href = latestRepo.html_url;
             })
-            .catch(err => {
-                console.error('GitHub API error:', err);
-            });
+            .catch(err => console.error('GitHub API error:', err));
 
-        // YouTube API
         const youtubeApiKey = 'AIzaSyDL-jITcz-tYfhjCy0D2_9XHVcTMzdWqxo';
         const channelId = 'UC3YOrUfCrzQdUNTSTYigt3g';
         fetch(`https://www.googleapis.com/youtube/v3/search?key=${youtubeApiKey}&channelId=${channelId}&order=date&part=snippet&type=video`)
             .then(response => response.json())
             .then(data => {
                 const latestVideo = data.items[0];
-                document.getElementById('youtube-video-title').textContent = latestVideo.snippet.title;
+                let title = latestVideo.snippet.title;
+                const maxWords = 5;
+                const words = title.split(' ');
+                if (words.length > maxWords) {
+                    title = words.slice(0, maxWords).join(' ') + '...';
+                }
+                document.getElementById('youtube-video-title').textContent = title;
                 const videoId = latestVideo.id.videoId;
                 document.getElementById('youtube-video-iframe').src = `https://www.youtube.com/embed/${videoId}`;
                 document.getElementById('youtube-video-link').href = `https://www.youtube.com/watch?v=${videoId}`;
             })
-            .catch(err => {
-                console.error('YouTube API error:', err);
-            });
+            .catch(err => console.error('YouTube API error:', err));
 
-        // Hide sections on mobile devices
         function isMobileDevice() {
             return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
         }
