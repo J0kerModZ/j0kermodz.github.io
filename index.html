@@ -137,93 +137,12 @@
     </header>
 
     <div class="container">
-        <h2>Trolling Games One Mod Menu At A Time</h2>
-        <p style="font-size: 18px; margin-top: 10px;">
-            <strong>J0kerModZ has canceled all operations on mods/cheats.<br>
-            THANK YOU FOR USING J0KER MENU!<br>
-            Site closing on May 30th, 2025.</strong>
-        </p>
+        <h2>j0kermodz.lol is closing on May 30th, 2025.<br><br>GO TO THE NEW SITE FOR UPDATES ON MODS!</h2>
         <div class="social-button-container">
-            <img src="https://cdn-icons-png.flaticon.com/128/1384/1384060.png" alt="YouTube">
-            <h3>YouTube</h3>
-            <a href="https://www.youtube.com/@J0kerModZ?sub_confirmation=1" target="_blank">Subscribe</a>
-        </div>
-
-        <div class="social-button-container">
-            <img src="https://cdn4.iconfinder.com/data/icons/social-media-flat-7/64/Social-media_Tiktok-512.png" alt="TikTok">
-            <h3>TikTok</h3>
-            <a href="https://www.tiktok.com/@j0kermodz_real" target="_blank">Follow</a>
-        </div>
-
-        <div class="social-button-container">
-            <img src="https://www.svgrepo.com/show/353655/discord-icon.svg" alt="Discord">
-            <h3>Discord</h3>
-            <a href="https://discord.gg/Kdwqg2VUHc" target="_blank">Join</a>
-        </div>
-
-        <div class="social-button-container">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub">
-            <h3>GitHub</h3>
-            <a href="https://github.com/J0kerModZ" target="_blank">Visit</a>
-        </div>
-
-        <div class="social-button-container">
-            <img src="https://cdn-icons-png.flaticon.com/128/10384/10384161.png" alt="Support Me">
-            <h3>Support Me!</h3>
-            <a href="https://www.j0kermodz.lol/Donate" target="_blank">Donate</a>
+            <img src="https://cdn-icons-png.flaticon.com/512/535/535239.png" alt="Link" style="width: 50px; margin-bottom: 10px;">
+            <h3>New Site/Updates On Mods</h3>
+            <a href="https://linktr.ee/j0kermodz" target="_blank">NEW SITE!</a>
         </div>
     </div>
-
-    <div id="github-repo" class="floating-box">
-        <h4>Latest GitHub Repo:</h4>
-        <p id="github-repo-name">Loading...</p>
-        <a href="#" id="github-repo-link" target="_blank">View Repo</a>
-    </div>
-
-    <div id="youtube-video" class="floating-box">
-        <h4>Latest YouTube Video:</h4>
-        <p id="youtube-video-title">Loading...</p>
-        <iframe id="youtube-video-iframe" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <a href="#" id="youtube-video-link" target="_blank">Watch Video</a>
-    </div>
-
-    <script>
-        fetch('https://api.github.com/users/J0kerModZ/repos?sort=updated&per_page=1')
-            .then(response => response.json())
-            .then(data => {
-                const latestRepo = data[0];
-                document.getElementById('github-repo-name').textContent = latestRepo.name;
-                document.getElementById('github-repo-link').href = latestRepo.html_url;
-            })
-            .catch(err => console.error('GitHub API error:', err));
-
-        const youtubeApiKey = 'AIzaSyDL-jITcz-tYfhjCy0D2_9XHVcTMzdWqxo';
-        const channelId = 'UC3YOrUfCrzQdUNTSTYigt3g';
-        fetch(`https://www.googleapis.com/youtube/v3/search?key=${youtubeApiKey}&channelId=${channelId}&order=date&part=snippet&type=video`)
-            .then(response => response.json())
-            .then(data => {
-                const latestVideo = data.items[0];
-                let title = latestVideo.snippet.title;
-                const maxWords = 5;
-                const words = title.split(' ');
-                if (words.length > maxWords) {
-                    title = words.slice(0, maxWords).join(' ') + '...';
-                }
-                document.getElementById('youtube-video-title').textContent = title;
-                const videoId = latestVideo.id.videoId;
-                document.getElementById('youtube-video-iframe').src = `https://www.youtube.com/embed/${videoId}`;
-                document.getElementById('youtube-video-link').href = `https://www.youtube.com/watch?v=${videoId}`;
-            })
-            .catch(err => console.error('YouTube API error:', err));
-
-        function isMobileDevice() {
-            return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-        }
-
-        if (isMobileDevice()) {
-            document.getElementById('github-repo').style.display = 'none';
-            document.getElementById('youtube-video').style.display = 'none';
-        }
-    </script>
 </body>
 </html>
